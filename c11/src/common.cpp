@@ -10,3 +10,8 @@ void func(/*TestA a,*/ TestA aa)
 	//aa.print(102);
 	std::cout << "func end " << &aa << std::endl;
 }
+
+void TestA::print_offset()
+{
+	std::cout << "offset = " << &(((TestA *)0)->number) << std::endl;
+}

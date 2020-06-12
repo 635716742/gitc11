@@ -29,8 +29,10 @@ public:
 		if (stoped.load())
 			throw std::runtime_error("commit on ThreadPool is stopped.");
 		using RetType = decltype(f(args...)); // typename std::result_of<F(Args...)>::type, 函数 f 的返回值类型
-
-		// bind会拷贝参数,会导致bug(当参数是引用的话返回值 会不对)
+		print_separator(i++);
+		// bind会拷贝参数,
+		// 非引用参数时会调3次copy函数 生成bind 1次  生成packaged_task 2次
+		// make_shared中存的是packaged_task 所以省略了一次参数的拷贝
 		auto task = std::make_shared<std::packaged_task<RetType()> >(
 			std::bind(std::forward<F>(f), std::forward<Args>(args)...)
 		);
@@ -41,9 +43,9 @@ public:
 			tasks.emplace
 			(
 				[task]()
-				{
-					(*task)();
-				}
+			{
+				(*task)();
+			}
 			);
 		}
 		condition_var.notify_one(); // 唤醒一个线程执行

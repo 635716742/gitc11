@@ -116,33 +116,70 @@ int main()
 	{
 		std::mutex main_lock;
 		TestA aa;
-		TestA bb;
-		//TestA cc = std::move(aa);   //bb cc的区别，cc多调用一次拷贝构造
-		//TestA&& bb = std::move(aa);
-		auto fun1 = std::bind(func, std::ref(aa)); //bind aa会调用拷贝构造  会导致bug(当参数是引用的话函数中做的修改并没有返回)
+		//TestA bb;
+		//TestA cc = std::forward<TestA>(aa);   //dd cc的区别，cc多调用一次拷贝构造
+		//TestA&& dd = std::move(aa);
+		auto fun1 = std::bind(func, /*std::ref*/(aa)); //bind aa会调用拷贝构造  会导致bug(当参数是引用的话函数中做的修改并没有返回)
+		//auto fun2 = std::make_shared<decltype(fun1)>(fun1);
+		//std::make_shared<std::packaged_task<void()> >(fun1);
 		std::packaged_task<void()> task(fun1);
-		auto future_result = task.get_future();
-		task();
+		//auto future_result = task.get_future();
+		//task();
 		std::cout << "TestA = " << &aa << " " << aa.get_data() << " number = " << aa.get_num() <<std::endl;
-		std::cout << "TestB = " << &bb << " " << bb.get_data() << " number = " << bb.get_num() << std::endl;
+		//std::cout << "TestB = " << &bb << " " << bb.get_data() << " number = " << bb.get_num() << std::endl;
 		//print_separator(sep++);
 		//func(aa);
 		//fun1();
 		//print_separator(sep++);
-		cthreadpool pool;
+		//cthreadpool pool;
 		//auto fun2 = pool.bind_simple(func, std::move(aa)); //bind aa会调用拷贝构造
-		////fun2();
-
-		//print_separator(sep++);
-		//{
-		//	std::lock_guard<std::mutex> lock(main_lock);
-		//	auto result = pool.commit(func, /*std::ref*/(bb));
-		//	result.get();
-		//}
+		//fun2();
+		print_separator(sep++);
+		{
+// 			std::lock_guard<std::mutex> lock(main_lock);
+// 			auto result = pool.commit(func,/* std::ref*/(aa));
+// 			if (result.valid())
+// 			{
+// 				result.get();
+// 			}
+		}
 		//std::lock_guard<std::mutex> lock(main_lock);
 		print_separator(sep++);
 		std::cout << "TestA = " << &aa << " " << aa.get_data() << " number = " << aa.get_num() << std::endl;
-		std::cout << "TestB = " << &bb << " " << bb.get_data() << " number = " << bb.get_num() << std::endl;
+		//std::cout << "TestB = " << &bb << " " << bb.get_data() << " number = " << bb.get_num() << std::endl;
+	}
+
+	{
+		std::string str("123456789");
+		std::string::size_type pos = str.find("0");
+		if (pos != std::string::npos)
+		{
+			std::cout <<  std::numeric_limits<int>::max() <<" : string find" << std::endl;
+			std::cout <<  std::numeric_limits<long>::max() <<" : string find" << std::endl;
+		}
+		else
+		{
+			std::cout << std::numeric_limits<unsigned int>::max() << ",string not find = "<< pos << std::endl;
+			std::cout << std::numeric_limits<int>::max() << ",string not find = "<< pos << std::endl;
+		}
+	}
+
+	{
+		TestA aa;
+		//std::string str("1231313131");
+		std::vector<int> vec;
+		for (int i = 0; i < 10000; ++i)
+		{
+			vec.push_back(i);
+		}
+		aa.print_offset();
+		std::cout << sizeof(aa) << std::endl;
+		std::cout << sizeof(TestA) << std::endl;
+		std::cout << sizeof(std::string) << std::endl;
+		std::cout << sizeof(std::vector<int>) << std::endl;
+		std::cout << sizeof(vec) << std::endl;
+		std::cout << sizeof(std::vector<std::string>) << std::endl;
+		//std::cout << sizeof(str) << std::endl;
 	}
 	print_separator(sep++);
 	getchar();

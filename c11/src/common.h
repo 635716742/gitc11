@@ -60,7 +60,7 @@ public:
 	};
 	TestA(const TestA& cl)
 	{
-		std::cout << this << ",copy name is TastA " << std::endl;
+		std::cout << &cl << " to " <<this << ",copy name is TastA " << std::endl;
 		data = cl.data;
 		number = cl.number;
 	};
@@ -103,9 +103,18 @@ public:
 		return number;
 	}
 
+	void print_offset();
 private:
 	std::shared_ptr<int> data;
 	int number;
 };
 
 void func(/*TestA a,*/ TestA aa);
+
+inline int add(int a, int b)
+{
+	std::cout << "implement add" << std::endl;
+	return a + b;
+};
+
+static int g_add = add(3 , 4);

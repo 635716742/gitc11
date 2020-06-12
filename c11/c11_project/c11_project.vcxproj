@@ -119,6 +119,7 @@
     <ClCompile Include="..\src\common.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\my_enable_if.cpp" />
+    <ClCompile Include="..\src\reflection\reflection.cpp" />
     <ClCompile Include="..\src\SparseMatrix.cpp" />
     <ClCompile Include="..\src\threadpool.cpp" />
   </ItemGroup>
@@ -127,6 +128,7 @@
     <ClInclude Include="..\src\common.h" />
     <ClInclude Include="..\src\my_enable_if.h" />
     <ClInclude Include="..\src\my_traits.h" />
+    <ClInclude Include="..\src\reflection\reflection.h" />
     <ClInclude Include="..\src\SparseMatrix.h" />
     <ClInclude Include="..\src\threadpool.h" />
   </ItemGroup>
