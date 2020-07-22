@@ -70,8 +70,8 @@ void my_algorithm::get_next(const std::string& str, std::vector<int>& next)
 		return; 
 	}
 	next.resize(str.size() + 1, 0);
-	int i = 1; 
-	int j = 0;
+	size_t i = 1; 
+	size_t j = 0;
 	next[1] = 0;
 	while (i < str.size())
 	{

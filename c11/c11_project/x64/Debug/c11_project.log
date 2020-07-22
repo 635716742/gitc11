@@ -1,13 +1,1 @@
-﻿  algorithm.cpp
-  common.cpp
-  main.cpp
-  my_enable_if.cpp
-  SparseMatrix.cpp
-d:\test\code\git_test\gitc11\c11\src\sparsematrix.cpp(29): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-d:\test\code\git_test\gitc11\c11\src\sparsematrix.cpp(30): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-d:\test\code\git_test\gitc11\c11\src\sparsematrix.cpp(32): warning C4267: “参数”: 从“size_t”转换到“const int”，可能丢失数据
-d:\test\code\git_test\gitc11\c11\src\sparsematrix.cpp(48): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-d:\test\code\git_test\gitc11\c11\src\sparsematrix.cpp(49): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-  threadpool.cpp
-  正在生成代码...
-  c11_project.vcxproj -> D:\test\Code\git_test\gitc11\x64\Debug\c11_project.exe
+﻿F:\vs2017\Common7\IDE\VC\VCTargets\Microsoft.Cpp.WindowsSDK.targets(46,5): error MSB8036: 找不到 Windows SDK 版本10.0.17134.0。请安装所需的版本的 Windows SDK 或者在项目属性页中或通过右键单击解决方案并选择“重定解决方案目标”来更改 SDK 版本。

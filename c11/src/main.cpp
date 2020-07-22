@@ -5,10 +5,17 @@
 #include "my_traits.h"
 #include "SparseMatrix.h"
 #include "threadpool.h"
+#include "mforward.h"
+#include "leetcode.h"
+
+#define TEST_RANGE 8
+
 
 int main()
 {
 	int sep = 1;
+
+#if (TEST_RANGE == 1 || TEST_RANGE == -1)
 	{
 		std::cout << std::boolalpha;
 		std::cout << std::is_base_of<MyTest::A, MyTest::B>::value << std::endl;
@@ -33,7 +40,8 @@ int main()
 		my_aa.get_next("ABC", next);
 		print_vec(next);
 	}
-
+#endif
+#if (TEST_RANGE == 2 || TEST_RANGE == -1)
 	{
 		//ComponentConstructor<int > int_component;
 		//int* obj_B = int_component.Create();
@@ -73,6 +81,8 @@ int main()
 		print_vec(dst_matrix);
 
 	}
+#endif
+#if (TEST_RANGE == 3 ||TEST_RANGE == -1)
 	{
 
 		//std::thread t1([&]() {
@@ -93,7 +103,8 @@ int main()
 		//std::function<int()> fun2;
 		//decltype(fun1) fun11;
 	}
-
+#endif
+#if (TEST_RANGE == 4 ||TEST_RANGE == -1)
 	{
 		{
 			//TestA aa;
@@ -111,7 +122,16 @@ int main()
 		const int && ii = x + y;
 		const int j = x + y;
 		std::cout << &i << ":"<< &ii << std::endl;
+		int* aa = &a;
+		const int *caa = &a;
+		mfoeward::func(&a);
+		mfoeward::func(a);
+		mfoeward::func(aa);
+		mfoeward::func(caa);
+	//	mfoeward::func(std::move(a));
 	}
+#endif
+#if (TEST_RANGE == 5 ||TEST_RANGE == -1)
 	sep = 1;
 	{
 		std::mutex main_lock;
@@ -148,7 +168,8 @@ int main()
 		std::cout << "TestA = " << &aa << " " << aa.get_data() << " number = " << aa.get_num() << std::endl;
 		//std::cout << "TestB = " << &bb << " " << bb.get_data() << " number = " << bb.get_num() << std::endl;
 	}
-
+#endif
+#if (TEST_RANGE == 6||TEST_RANGE == -1)
 	{
 		std::string str("123456789");
 		std::string::size_type pos = str.find("0");
@@ -163,7 +184,8 @@ int main()
 			std::cout << std::numeric_limits<int>::max() << ",string not find = "<< pos << std::endl;
 		}
 	}
-
+#endif
+#if (TEST_RANGE == 7 ||TEST_RANGE == -1)
 	{
 		TestA aa;
 		//std::string str("1231313131");
@@ -182,6 +204,23 @@ int main()
 		//std::cout << sizeof(str) << std::endl;
 	}
 	print_separator(sep++);
+#endif
+#if (TEST_RANGE == 8 ||TEST_RANGE == -1)
+	{
+		std::cout << std::boolalpha;
+		int i = 0;
+		for (auto var : LC::g_mastrix)
+		{
+			for (auto var1 : var)
+			{
+				std::cout << LC::leet_code4(LC::g_mastrix, var1) << ":" << ++i <<std::endl;
+			}
+		}
+		//bool result = LC::leet_code4(LC::g_mastrix, 31);
+		//std::cout << result << std::endl;
+	}
+	print_separator(sep++);
+#endif
 	getchar();
 	return 0;
 }

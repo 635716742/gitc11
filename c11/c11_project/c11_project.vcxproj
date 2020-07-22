@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\algorithm.cpp" />
     <ClCompile Include="..\src\common.cpp" />
+    <ClCompile Include="..\src\leetcode.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\my_enable_if.cpp" />
     <ClCompile Include="..\src\reflection\reflection.cpp" />
@@ -126,6 +127,8 @@
   <ItemGroup>
     <ClInclude Include="..\src\algorithm.h" />
     <ClInclude Include="..\src\common.h" />
+    <ClInclude Include="..\src\leetcode.h" />
+    <ClInclude Include="..\src\mforward.h" />
     <ClInclude Include="..\src\my_enable_if.h" />
     <ClInclude Include="..\src\my_traits.h" />
     <ClInclude Include="..\src\reflection\reflection.h" />

@@ -30,6 +30,9 @@
     <ClCompile Include="..\src\reflection\reflection.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\leetcode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\my_traits.h">
@@ -52,6 +55,12 @@
     </ClInclude>
     <ClInclude Include="..\src\reflection\reflection.h">
       <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mforward.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\leetcode.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
