@@ -87,3 +87,36 @@ void my_algorithm::get_next(const std::string& str, std::vector<int>& next)
 		}
 	}
 }
+
+void my_algorithm::pre_traverse(const tn_intptr root, vec_int& target)
+{
+	if (!root)
+	{
+		return;
+	}
+	target.push_back(root->value);
+	pre_traverse(root->left, target);
+	pre_traverse(root->right, target);
+}
+
+void my_algorithm::middle_traverse(const tn_intptr root, vec_int& target)
+{
+	if (!root)
+	{
+		return;
+	}
+	pre_traverse(root->left, target);
+	target.push_back(root->value);
+	pre_traverse(root->right, target);
+}
+
+void my_algorithm::back_traverse(const tn_intptr root, vec_int& target)
+{
+	if (!root)
+	{
+		return;
+	}
+	pre_traverse(root->left, target);
+	pre_traverse(root->right, target);
+	target.push_back(root->value);
+}
