@@ -3,8 +3,6 @@
 #include <string>
 #include <tuple>
 
-typedef std::vector<int> vec_int;
-
 template<typename T>
 struct TreeNode
 {
@@ -31,8 +29,19 @@ public:
 	void middle_traverse(const tn_intptr root, vec_int& target);
 	//后序遍历:对于当前结点，先输出它的左孩子，然后输出它的右孩子，最后输出该结点。
 	void back_traverse(const tn_intptr root, vec_int& target);
+	//任意两个序列恢复树,前提序列元素不重复
+	enum 
+	{
+		PRE_MIDDLE,
+		PRE_BACK,
+		MIDDLE_BACK
+	};
+	void recover_tree(int type, const vec_int& seq1, const vec_int& seq2, tn_intptr root);
 private:
 	int _coin_max(const int& coin_value, int& num);
+	void _pm_tree(vec_int& seq1, vec_int& seq2, tn_intptr root);
+	void _pb_tree(vec_int& seq1, vec_int& seq2, tn_intptr root);
+	void _mb_tree(vec_int& seq1, vec_int& seq2, tn_intptr root);
 
 };
 

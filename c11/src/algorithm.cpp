@@ -63,6 +63,33 @@ int my_algorithm::_coin_max(const int& coin_value, int& num)
 	return 0;
 }
 
+void my_algorithm::_pm_tree(vec_int& seq1, vec_int& seq2, tn_intptr root)
+{
+	if (seq1.size() != seq2.size() || seq1.size() <= 0)
+	{
+		return;
+	}
+
+	if (!root)
+	{
+		root = new tn_int;
+	}
+	root->value = seq1.front();
+	vec_int left;
+	vec_int right;
+	
+}
+
+void my_algorithm::_pb_tree(vec_int& seq1, vec_int& seq2, tn_intptr root)
+{
+
+}
+
+void my_algorithm::_mb_tree(vec_int& seq1, vec_int& seq2, tn_intptr root)
+{
+
+}
+
 void my_algorithm::get_next(const std::string& str, std::vector<int>& next)
 {
 	if (str.size() < 1)
@@ -119,4 +146,9 @@ void my_algorithm::back_traverse(const tn_intptr root, vec_int& target)
 	pre_traverse(root->left, target);
 	pre_traverse(root->right, target);
 	target.push_back(root->value);
+}
+
+void my_algorithm::recover_tree(int type, const vec_int& seq1, const vec_int& seq2, tn_intptr root)
+{
+
 }
