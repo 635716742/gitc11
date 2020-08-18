@@ -40,4 +40,68 @@ namespace my_sort
 		}
 	}
 
+	void insert_sort(vec_int& array)
+	{
+		auto len = array.size();
+		if (len < 2)
+		{
+			return;
+		}
+		for (int i = 1; i < len; ++i)
+		{
+			int index = i;
+			for (auto j = i - 1;j >= 0;j--)
+			{
+				if (array[index] < array[j])
+				{
+					std::swap(array[index], array[j]);
+					index = j;
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+	}
+
+	void half_insert_sort(vec_int& array)
+	{
+		auto len = array.size();
+		if (len < 2)
+		{
+			return;
+		}
+		for (int i = 1; i < len; ++i)
+		{
+			int low = 0;
+			int high = i - 1;
+			while (low <= high)
+			{
+				int mid = ((low + high) / 2);
+				if (array[mid] > array[i])
+				{
+					high = mid - 1;
+				}
+				else
+				{
+					low = mid + 1;
+				}
+			}
+			int index = i; //£¿hight+1
+			for (auto j = i - 1; j >= high + 1; j--)
+			{
+				if (array[index] < array[j])
+				{
+					std::swap(array[index], array[j]);
+					index = j;
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+	}
+
 }
