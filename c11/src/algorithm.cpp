@@ -47,6 +47,30 @@ int my_algorithm::coin_max(int num)
 	return 0;
 #endif
 }
+//假设n的最小值是dp(n)个
+int my_algorithm::dp(int num)
+{
+	std::vector<int> coin_value = { 100, 50, 20, 10, 5, 1 };
+	if (num == 0)
+	{
+		return 0;
+	}
+	if (num < 0)
+	{
+		return -1;
+	}
+	int result = num;
+	for each(auto i in coin_value)
+	{
+		int cur = dp(num - i);
+		if (cur < 0)
+		{
+			continue;
+		}
+		result = std::min(result, cur + 1);
+	}
+	return result;
+}
 
 int my_algorithm::_coin_max(const int& coin_value, int& num)
 {
